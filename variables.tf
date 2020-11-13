@@ -52,6 +52,12 @@ variable "https_listener_rules" {
   default     = []
 }
 
+variable "http_listener_rules" {
+  description = "A list of maps describing the Listener Rules for this ALB. Required key/values: actions, conditions. Optional key/values: priority, https_listener_index (default to https_listeners[count.index])"
+  type        = any
+  default     = []
+}
+
 variable "idle_timeout" {
   description = "The time in seconds that the connection is allowed to be idle."
   type        = number
