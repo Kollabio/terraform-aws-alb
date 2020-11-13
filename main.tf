@@ -111,7 +111,7 @@ resource "aws_lb_target_group" "main" {
 }
 
 resource "aws_lb_listener_rule" "http_listener_rule" {
-  count = var.enabled ? length(var.http_listener_rules) : 0
+  count = var.create_lb ? length(var.http_listener_rules) : 0
 
   listener_arn = aws_lb_listener.frontend_http_tcp[lookup(var.http_listener_rules[count.index], "http_listener_index", count.index)].arn
   priority     = lookup(var.http_listener_rules[count.index], "priority", null)
